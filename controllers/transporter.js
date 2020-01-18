@@ -1,13 +1,28 @@
 var nodemailer = require('nodemailer');
 const creds = require('../mailConfig');
 
-var transport = {
+var transport;
+if (process.env.NODE_ENV === 'production') {
+    transport = {
+        host: 'smtp.gmail.com',
+        auth: {
+            user: process.env.MAIL_ADDR,
+            pass: process.env.MAIL_PASS
+        }
+    }
+} else if (process.env.NODE_ENV === 'development') {
+
+}
+console.log(process.env.NODE_ENV)
+transport = {
     host: 'smtp.gmail.com',
     auth: {
         user: creds.USER,
         pass: creds.PASS
     }
 }
+
+
 
 var transporter = nodemailer.createTransport(transport)
 
