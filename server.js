@@ -38,9 +38,9 @@ app.get('/*', (req, res) => {
 
 
 const microcontrollersRouter = require('./routes/microcontrollers')
-const mailerRouter = require('./routes/mailer');
+// const mailerRouter = require('./routes/mailer');
 app.use('/microcontrollers', microcontrollersRouter)
-app.use('/mailer', mailerRouter)
+// app.use('/mailer', mailerRouter)
 
 
 app.listen(process.env.PORT || 3000, '0.0.0.0', () => console.log('server started'));
