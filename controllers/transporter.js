@@ -1,5 +1,9 @@
 var nodemailer = require('nodemailer');
-var user = require('../mailConfig')
+var user;
+
+if (process.env.NODE_ENV !== 'production') {
+    user = require('../mailConfig');
+}
 
 
 var transport = {
