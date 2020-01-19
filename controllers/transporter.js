@@ -8,6 +8,7 @@ transport = {
         pass: process.env.MAIL_PASS
     }
 }
+console.log(process.env.MAIL_ADDR, process.env.MAIL_PASS)
 console.log(process.env.NODE_ENV)
 
 
