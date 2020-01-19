@@ -1,4 +1,5 @@
 var nodemailer = require('nodemailer');
+var user = require('../mailConfig')
 
 
 var transport = {
@@ -6,8 +7,8 @@ var transport = {
     port: 465,
     secure: true,
     auth: {
-        user: process.env.MAIL_ADDR,
-        pass: process.env.MAIL_PASS
+        user: process.env.NODE_ENV === 'production' ? process.env.MAIL_ADDR : user.USER,
+        pass: process.env.NODE_ENV === 'production' ? process.env.MAIL_PASS : user.PASS
     }
 }
 console.log(process.env.MAIL_ADDR, process.env.MAIL_PASS)
