@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const transporter = require('../controllers/transporter');
-const mailConfig = require('../mailConfig')
+// const mailConfig = require('../mailConfig')
 
 router.post('/send', (req, res, next) => {
     var name = req.body.data.name
@@ -12,7 +12,7 @@ router.post('/send', (req, res, next) => {
 
     var mail = {
         from: name,
-        to: mailConfig.USER,  //Change to email address that you want to receive messages on
+        to: 'nbumbu92@gmail.com',  //Change to email address that you want to receive messages on
         subject: 'New Message from Contact Form',
         text: content
     }
