@@ -15,10 +15,6 @@ var transport = {
         pass: process.env.NODE_ENV === 'production' ? process.env.MAIL_PASS : user.PASS
     }
 }
-console.log(process.env.MAIL_ADDR, process.env.MAIL_PASS)
-console.log(process.env.NODE_ENV)
-
-
 
 var transporter = nodemailer.createTransport(transport)
 
