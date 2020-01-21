@@ -11,6 +11,15 @@ router.get('/', async (req, res) => {
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
+});
+
+router.get('/:ucName', async(req, res) => {
+    try {
+        const microcontroller = await Microcontroller.find({name: req.params.ucName});
+        res.json(microcontroller[0]);
+    } catch (err) {
+        res.status(500).json({message: err.message})
+    }
 })
 
 

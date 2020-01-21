@@ -1,9 +1,7 @@
 const mongoose = require('mongoose')
-const subscriberSchema = new mongoose.Schema({
-    test: {
-        type: String,
-        required: true
-    },
+const microcontrollerSchema = new mongoose.Schema({
+    name: String,
+    data: Object
 });
 
-module.exports = mongoose.model('Microcontroller', subscriberSchema);
+module.exports = mongoose.model('microcontrollers', microcontrollerSchema);
