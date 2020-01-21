@@ -9,6 +9,7 @@ app.use(cors({ origin: true, credentials: true }));
 
 const mongoose = require('mongoose');
 
+console.log('database string is: ', process.env.DATABASE_STRING)
 mongoose.connect(process.env.DATABASE_STRING, { useNewUrlParser: true });
 const db = mongoose.connection;
 db.on('error', (error) => console.error(error));
