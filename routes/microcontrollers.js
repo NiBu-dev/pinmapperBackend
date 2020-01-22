@@ -7,15 +7,18 @@ const Microcontroller = require('../models/microcontroller');
 router.get('/', async (req, res) => {
     try {
         const microcontroller = await Microcontroller.find();
-        res.json(microcontroller[0]);
+        res.json(microcontroller);
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
 });
 
 router.get('/:ucName', async(req, res) => {
+    
     try {
+        // const microcontroller = await Microcontroller.find({name: req.params.ucName});
         const microcontroller = await Microcontroller.find({name: req.params.ucName});
+        console.log(microcontroller)
         res.json(microcontroller[0]);
     } catch (err) {
         res.status(500).json({message: err.message})
