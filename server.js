@@ -13,19 +13,11 @@ const db = mongoose.connection;
 db.on('error', (error) => console.error(error));
 db.once('open', () => {
     console.log('connected to database')
-    mongoose.connection.db.listCollections().toArray(function (err, names) {
-        console.log(names); // [{ name: 'dbname.myCollection' }]
-    });
+    // mongoose.connection.db.listCollections().toArray(function (err, names) {
+    //     console.log(names); // [{ name: 'dbname.myCollection' }]
+    // });
 
 });
-
-// CAPTURE APP TERMINATION / RESTART EVENTS
-function gracefulShutdown(msg, callback) {
-    mongoose.connection.close(function() {
-        console.log('Mongoose disconnected through ' + msg);
-        callback();
-    });
-}
 
 app.use(express.json());
 app.use((req, res, next) => {

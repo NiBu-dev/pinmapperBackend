@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Microcontroller = require('../models/microcontroller');
 
-
 // Get all microcontrollers
 router.get('/', async (req, res) => {
     try {
@@ -13,17 +12,17 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.get('/:ucName', async(req, res) => {
-    
+router.get('/:ucName', async (req, res) => {
     try {
-        // const microcontroller = await Microcontroller.find({name: req.params.ucName});
-        const microcontroller = await Microcontroller.find({name: req.params.ucName});
-        console.log(microcontroller)
-        res.json(microcontroller[0]);
+        const microcontroller = await Microcontroller.find({ name: req.params.ucName });
+        if (microcontroller.length === 0) {
+            res.status(404).json({ message: 'There is no such microcontroller version.' })
+        } else {
+            res.json(microcontroller[0]);
+        }
     } catch (err) {
-        res.status(500).json({message: err.message})
+        res.status(500).json({ message: err.message })
     }
 })
-
 
 module.exports = router;
